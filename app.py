@@ -24,8 +24,7 @@ def load_key(filename):
     return private_key
 
 
-def make_string_from_password(message):
-    filename = 'privkey.pem'
+def make_string_from_password(message, filename):
     private_key = load_key(filename)
     public_key = private_key.public_key()
 
@@ -39,12 +38,20 @@ def make_string_from_password(message):
     )
     return ciphertext
 
-@app.route('/get_str')
+
+@app.route('/amir')
 def public_key():
     global password
     password = password_maker()
-    return make_string_from_password(password)
+    filename1 = 'privkey_amir.pem'
+    return make_string_from_password(password, filename1)
 
+@app.route('/hossein')
+def public_key():
+    global password
+    password = password_maker()
+    filename1 = 'privkey_hossein.pem'
+    return make_string_from_password(password, filename1)
 
 if __name__ == '__main__':
     app.run()
