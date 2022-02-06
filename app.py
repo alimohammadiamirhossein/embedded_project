@@ -47,11 +47,12 @@ def public_key():
     return make_string_from_password(password, filename1)
 
 @app.route('/hossein')
-def public_key():
+def public_key(rew):
+    string = request.args['string']
     global password
     password = password_maker()
     filename1 = 'privkey_hossein.pem'
     return make_string_from_password(password, filename1)
-
+r.get(url, params={'string':"value"})
 if __name__ == '__main__':
     app.run()
